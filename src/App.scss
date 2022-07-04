@@ -20,13 +20,22 @@ body {
   text-align: center;
 }
 
+.btn {
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 0.2s;
+  &:hover {
+    color: orange;
+  }
+}
+
 .theclock {
   margin: 10px;
   color: rgb(0, 61, 61);
   // border: 2px solid orange;
   width: 350px;
   height: 175px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: ghostwhite;
 
   .title {
@@ -43,6 +52,6 @@ body {
 .settings-container {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 10px;
+  justify-content: center;
+  gap: 30px;
 }

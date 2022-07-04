@@ -17,7 +17,7 @@ function Settings() {
           <h4 id='session-label'>Session length</h4>
 
           <BsFillCaretUpFill id='session-increment' />
-          <h2>25</h2>
+          <h2 id='session-length'>25</h2>
           <BsFillCaretDownFill id='session-decrement' />
         </div>
       </div>
