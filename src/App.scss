@@ -21,19 +21,28 @@ body {
 }
 
 .theclock {
+  margin: 10px;
   color: rgb(0, 61, 61);
   // border: 2px solid orange;
   width: 350px;
-  height: 250px;
+  height: 175px;
   border-radius: 20px;
   background-color: ghostwhite;
 
-  h2 {
+  .title {
     padding-top: 10px;
+    padding-bottom: 20px;
   }
 
   h1 {
     font-size: 50px;
-    padding-top: 25px;
+    // padding-top: 25px;
   }
+}
+
+.settings-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
 }
