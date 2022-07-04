@@ -7,21 +7,17 @@ function Settings({
   setSessionLength,
   setBreakLength,
 }) {
-  function handleClick(e) {
-    e.preventDefault()
-    if (typeof e !== 'null') {
-      switch (e) {
-        case 'break-decrement':
-          setBreakLength((prevBL) => prevBL - 1)
-          break
-        case 'break-increment':
-          setBreakLength((prevBL) => prevBL + 1)
-          break
-
-        default:
-          break
-      }
-    }
+  function breakIncrement(e) {
+    setBreakLength((prevBL) => prevBL + 1)
+  }
+  function breakDecrement(e) {
+    setBreakLength((prevBL) => prevBL - 1)
+  }
+  function sessionIncrement(e) {
+    setSessionLength((prevBL) => prevBL + 1)
+  }
+  function sessionDecrement(e) {
+    setSessionLength((prevBL) => prevBL - 1)
   }
   return (
     <div className='settings theclock'>
@@ -29,17 +25,19 @@ function Settings({
       <div className='settings-container'>
         <div>
           <h4 id='break-label'>Break length</h4>
+          <h3>
+            <BsFillCaretUpFill
+              className='btn'
+              onClick={breakIncrement}
+              id='break-increment'
+            />
+          </h3>
 
-          <BsFillCaretUpFill
-            className='btn'
-            onClick={(e) => handleClick(e.target.farthestViewportElement.id)}
-            id='break-increment'
-          />
           <h2 id='break-length'>{breakLength}</h2>
           <h3>
             <BsFillCaretDownFill
               className='btn'
-              onClick={(e) => handleClick(e.target.farthestViewportElement.id)}
+              onClick={breakDecrement}
               id='break-decrement'
             />
           </h3>
@@ -50,13 +48,13 @@ function Settings({
           <BsFillCaretUpFill
             id='session-increment'
             className='btn'
-            onClick={(e) => handleClick(e.target.farthestViewportElement.id)}
+            onClick={sessionIncrement}
           />
           <h2 id='session-length'>{sessionLength}</h2>
           <BsFillCaretDownFill
             id='session-decrement'
             className='btn'
-            onClick={(e) => handleClick(e.target.farthestViewportElement.id)}
+            onClick={sessionDecrement}
           />
         </div>
       </div>
