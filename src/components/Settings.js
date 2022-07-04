@@ -8,16 +8,16 @@ function Settings({
   setBreakLength,
 }) {
   function breakIncrement(e) {
-    setBreakLength((prevBL) => prevBL + 1)
+    breakLength < 60 && setBreakLength((prevBL) => prevBL + 1)
   }
   function breakDecrement(e) {
-    setBreakLength((prevBL) => prevBL - 1)
+    breakLength > 1 && setBreakLength((prevBL) => prevBL - 1)
   }
   function sessionIncrement(e) {
-    setSessionLength((prevBL) => prevBL + 1)
+    sessionLength < 60 && setSessionLength((prevBL) => prevBL + 1)
   }
   function sessionDecrement(e) {
-    setSessionLength((prevBL) => prevBL - 1)
+    sessionLength > 1 && setSessionLength((prevBL) => prevBL - 1)
   }
   return (
     <div className='settings theclock'>

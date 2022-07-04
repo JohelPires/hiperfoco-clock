@@ -12,6 +12,7 @@ function App() {
     <div className='App'>
       <TheClock
         timeLeft={timeLeft}
+        sessionLength={sessionLength}
         setBreakLength={setBreakLength}
         setSessionLength={setSessionLength}
       />
