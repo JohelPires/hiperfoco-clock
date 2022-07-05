@@ -35,7 +35,7 @@ function TheClock({
       setStatus('Session')
     }
     const timer =
-      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
+      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1)
     return () => clearInterval(timer)
   }, [playPause, counter])
 
@@ -45,6 +45,7 @@ function TheClock({
     setBreakLength(5)
     setCounter(1500)
     setPlayPause(false)
+    setStatus('Session')
   }
   function toggleTimer() {
     setPlayPause((prevPP) => !prevPP)
