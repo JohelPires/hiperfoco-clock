@@ -14,6 +14,7 @@ function App() {
       <Header />
       <TheClock
         // timeLeft={timeLeft}
+        breakLength={breakLength}
         sessionLength={sessionLength}
         setBreakLength={setBreakLength}
         setSessionLength={setSessionLength}
