@@ -4,7 +4,7 @@ import Settings from './components/Settings'
 import TheClock from './components/TheClock'
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState('25:00')
+  const [timeLeft, setTimeLeft] = useState(1500)
   const [breakLength, setBreakLength] = useState(5)
   const [sessionLength, setSessionLength] = useState(25)
 

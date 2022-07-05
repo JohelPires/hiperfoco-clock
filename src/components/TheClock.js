@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import formatDuration from 'format-duration'
+import React, { useEffect, useState } from 'react'
 import {
   BsArrowCounterclockwise,
   BsPauseFill,
@@ -11,14 +12,15 @@ function TheClock({
   setSessionLength,
   setBreakLength,
 }) {
-  const [counter, setCounter] = useState(60)
+  const [counter, setCounter] = useState(1500)
+  const [playPause, setPlayPause] = useState(false)
 
   // Third Attempts
-  React.useEffect(() => {
+  useEffect(() => {
     const timer =
-      counter > 0 && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
+      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
     return () => clearInterval(timer)
-  }, [counter])
+  }, [playPause, counter])
 
   function handleReset() {
     //stop timer
@@ -26,14 +28,15 @@ function TheClock({
     setBreakLength(5)
   }
   function toggleTimer() {
-    setCounter(0)
+    setPlayPause((prevPP) => !prevPP)
+    console.log(playPause)
   }
   return (
     <div className='theclock'>
       <h2 className='title' id='timer-label'>
         Session
       </h2>
-      <h1 id='time-left'>{counter}</h1>
+      <h1 id='time-left'>{formatDuration(counter * 1000)}</h1>
       <div className='settings-container'>
         <h2 onClick={toggleTimer} className='btn' id='start_stop'>
           <BsPauseFill /> <BsPlayFill />
