@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.scss'
+import Header from './components/Header'
 import Settings from './components/Settings'
 import TheClock from './components/TheClock'
 
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Header />
       <TheClock
         // timeLeft={timeLeft}
         sessionLength={sessionLength}

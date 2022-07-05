@@ -14,7 +14,17 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   background-color: rgb(0, 61, 61);
-  background-color: lawngreen;
+}
+
+.header {
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  h1 {
+    font-size: 40px;
+  }
+  h3 {
+    font-size: 25px;
+  }
 }
 
 .App {
@@ -40,8 +50,7 @@ body {
   border-radius: 10px;
   background-color: ghostwhite;
   background-color: white;
-  box-shadow: 5px 5px 0 gray;
-
+  box-shadow: 0 15px 25px -15px black;
   .title {
     padding-top: 10px;
     padding-bottom: 20px;
@@ -49,7 +58,10 @@ body {
 
   h1 {
     font-size: 50px;
-    // padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  h2 {
+    padding-bottom: 10px;
   }
 }
 

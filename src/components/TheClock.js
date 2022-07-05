@@ -42,7 +42,7 @@ function TheClock({
         Session
       </h2>
       <h1 id='time-left'>{formatDuration(counter * 1000)}</h1>
-      <div className='settings-container'>
+      <div className='settings-container play-pause-btns'>
         <h2 onClick={toggleTimer} className='btn' id='start_stop'>
           {playPause ? <BsPauseFill /> : <BsPlayFill />}
         </h2>
