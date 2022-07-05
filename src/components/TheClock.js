@@ -44,7 +44,7 @@ function TheClock({
       <h1 id='time-left'>{formatDuration(counter * 1000)}</h1>
       <div className='settings-container'>
         <h2 onClick={toggleTimer} className='btn' id='start_stop'>
-          <BsPauseFill /> <BsPlayFill />
+          {playPause ? <BsPauseFill /> : <BsPlayFill />}
         </h2>
         <h2 onClick={handleReset} className='btn' id='reset'>
           <BsArrowCounterclockwise />
