@@ -1,10 +1,12 @@
 import formatDuration from 'format-duration'
 import React, { useEffect, useState } from 'react'
+import ReactAudioPlayer from 'react-audio-player'
 import {
   BsArrowCounterclockwise,
   BsPauseFill,
   BsPlayFill,
 } from 'react-icons/bs'
+import useSound from 'use-sound'
 import sound from '../bell-ringing-05.mp3'
 
 function TheClock({
@@ -16,6 +18,7 @@ function TheClock({
   const [counter, setCounter] = useState(sessionLength * 60)
   const [playPause, setPlayPause] = useState(false)
   const [status, setStatus] = useState('Session')
+  const [playBell] = useSound(sound)
 
   useEffect(() => {
     setCounter(sessionLength * 60)
@@ -24,9 +27,11 @@ function TheClock({
   // Third Attempts
   useEffect(() => {
     if (counter < 0 && status === 'Session') {
+      playBell()
       setCounter(breakLength * 60)
       setStatus('Break')
     } else if (counter < 0 && status === 'Break') {
+      playBell()
       setCounter(sessionLength * 60)
       setStatus('Session')
     }
@@ -40,6 +45,7 @@ function TheClock({
     setSessionLength(25)
     setBreakLength(5)
     setCounter(1500)
+    setPlayPause(false)
   }
   function toggleTimer() {
     setPlayPause((prevPP) => !prevPP)
@@ -52,11 +58,11 @@ function TheClock({
       </h2>
       <h1 id='time-left'>{formatDuration(counter * 1000)}</h1>
 
-      {/* <audio id='beep' autoPlay controls>
-        <source src={sound} type='audio/mpeg'></source>
-      </audio> */}
-
-      <audio src={sound} autoPlay />
+      {counter === 0 && (
+        <audio id='beep' autoPlay>
+          <source src={sound} type='audio/mpeg'></source>
+        </audio>
+      )}
 
       <div className='settings-container play-pause-btns'>
         <h2 onClick={toggleTimer} className='btn' id='start_stop'>

@@ -12,19 +12,21 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <TheClock
-        // timeLeft={timeLeft}
-        breakLength={breakLength}
-        sessionLength={sessionLength}
-        setBreakLength={setBreakLength}
-        setSessionLength={setSessionLength}
-      />
-      <Settings
-        breakLength={breakLength}
-        sessionLength={sessionLength}
-        setBreakLength={setBreakLength}
-        setSessionLength={setSessionLength}
-      />
+      <main>
+        <TheClock
+          // timeLeft={timeLeft}
+          breakLength={breakLength}
+          sessionLength={sessionLength}
+          setBreakLength={setBreakLength}
+          setSessionLength={setSessionLength}
+        />
+        <Settings
+          breakLength={breakLength}
+          sessionLength={sessionLength}
+          setBreakLength={setBreakLength}
+          setSessionLength={setSessionLength}
+        />
+      </main>
     </div>
   )
 }
