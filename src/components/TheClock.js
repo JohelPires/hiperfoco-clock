@@ -1,6 +1,5 @@
-import formatDuration from 'format-duration'
+import duration from 'format-duration-time'
 import React, { useEffect, useState } from 'react'
-import ReactAudioPlayer from 'react-audio-player'
 import {
   BsArrowCounterclockwise,
   BsPauseFill,
@@ -56,7 +55,7 @@ function TheClock({
       <h2 className='title' id='timer-label'>
         {status}
       </h2>
-      <h1 id='time-left'>{formatDuration(counter * 1000)}</h1>
+      <h1 id='time-left'>{duration(counter * 1000).format('mm:ss')}</h1>
 
       {counter === 0 && (
         <audio id='beep' autoPlay>
