@@ -12,8 +12,12 @@ function TheClock({
   setSessionLength,
   setBreakLength,
 }) {
-  const [counter, setCounter] = useState(1500)
+  const [counter, setCounter] = useState(sessionLength * 60)
   const [playPause, setPlayPause] = useState(false)
+
+  useEffect(() => {
+    setCounter(sessionLength * 60)
+  }, [sessionLength])
 
   // Third Attempts
   useEffect(() => {
@@ -24,8 +28,9 @@ function TheClock({
 
   function handleReset() {
     //stop timer
-    setSessionLength(25)
+    setSessionLength(1500)
     setBreakLength(5)
+    setCounter(1500)
   }
   function toggleTimer() {
     setPlayPause((prevPP) => !prevPP)
