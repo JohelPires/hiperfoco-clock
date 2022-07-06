@@ -5,11 +5,10 @@ import Settings from './components/Settings'
 import TheClock from './components/TheClock'
 import useSound from 'use-sound'
 import sound from './bell-ringing-05.mp3'
-import duration from 'format-duration-time'
 
 function App() {
   // const [timeLeft, setTimeLeft] = useState(1500)
-  const [counter, setCounter] = useState(1500)
+  // const [counter, setCounter] = useState(1500)
   const [playPause, setPlayPause] = useState(false)
   //const [status, setStatus] = useState('Session')
   const [playBell] = useSound(sound)
@@ -71,8 +70,8 @@ function App() {
           playPause={playPause}
           setPlayPause={setPlayPause}
           sound={sound}
-          counter={counter}
-          setCounter={setCounter}
+          // counter={counter}
+          // setCounter={setCounter}
           theClock={theClock}
           setTheClock={setTheClock}
           // display={theClock.timeLeft}
@@ -84,7 +83,7 @@ function App() {
           // setSessionLength={setSessionLength}
           theClock={theClock}
           setTheClock={setTheClock}
-          setCounter={setCounter}
+          // setCounter={setCounter}
           playPause={playPause}
         />
       </main>

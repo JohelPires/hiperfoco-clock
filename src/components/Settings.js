@@ -2,16 +2,17 @@ import React from 'react'
 import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs'
 
 function Settings({ theClock, setTheClock, setCounter, playPause }) {
-  function breakIncrement(e) {
-    // const updateTC = theClock.breakLength + 1
-    theClock.breakLength < 60 &&
+  function breakIncrement() {
+    !playPause &&
+      theClock.breakLength < 60 &&
       setTheClock((prevTC) => ({
         ...prevTC,
         breakLength: prevTC.breakLength + 1,
       }))
   }
-  function breakDecrement(e) {
-    theClock.breakLength > 1 &&
+  function breakDecrement() {
+    !playPause &&
+      theClock.breakLength > 1 &&
       setTheClock((prevTC) => ({
         ...prevTC,
         breakLength: prevTC.breakLength - 1,

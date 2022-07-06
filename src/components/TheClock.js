@@ -4,6 +4,7 @@ import {
   BsPauseFill,
   BsPlayFill,
 } from 'react-icons/bs'
+import duration from 'format-duration-time'
 
 function TheClock({
   theClock,
@@ -22,7 +23,7 @@ function TheClock({
       sessionLength: 25,
       timeLeft: 1500,
     })
-    setCounter(1500)
+    // setCounter(1500)
     setPlayPause(false)
   }
   function toggleTimer() {
@@ -36,7 +37,9 @@ function TheClock({
       <h2 className='title' id='timer-label'>
         {theClock.status}
       </h2>
-      <h1 id='time-left'>{theClock.timeLeft}</h1>
+      <h1 id='time-left'>
+        {duration(theClock.timeLeft * 1000).format('mm:ss')}
+      </h1>
 
       {theClock.timeLeft === 0 && (
         <audio id='beep' autoPlay>
