@@ -18,12 +18,12 @@ function TheClock({
   const [playPause, setPlayPause] = useState(false)
   const [status, setStatus] = useState('Session')
   const [playBell] = useSound(sound)
+  const [timeLeft, setTimeLeft] = useState('25:00')
 
   useEffect(() => {
     setCounter(sessionLength * 60)
   }, [sessionLength])
 
-  // Third Attempts
   useEffect(() => {
     if (counter < 0 && status === 'Session') {
       playBell()
@@ -34,8 +34,9 @@ function TheClock({
       setCounter(sessionLength * 60)
       setStatus('Session')
     }
+    setTimeLeft(duration(counter * 1000).format('mm:ss'))
     const timer =
-      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1)
+      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
     return () => clearInterval(timer)
   }, [playPause, counter])
 
@@ -56,7 +57,7 @@ function TheClock({
       <h2 className='title' id='timer-label'>
         {status}
       </h2>
-      <h1 id='time-left'>{duration(counter * 1000).format('mm:ss')}</h1>
+      <h1 id='time-left'>{timeLeft}</h1>
 
       {counter === 0 && (
         <audio id='beep' autoPlay>
