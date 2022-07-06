@@ -1,12 +1,7 @@
 import React from 'react'
 import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs'
 
-function Settings({
-  breakLength,
-  sessionLength,
-  setSessionLength,
-  setBreakLength,
-}) {
+function Settings({ theClock, setTheClock }) {
   function breakIncrement(e) {
     breakLength < 60 && setBreakLength((prevBL) => prevBL + 1)
   }

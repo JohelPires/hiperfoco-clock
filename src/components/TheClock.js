@@ -1,63 +1,42 @@
-import duration from 'format-duration-time'
 import React, { useEffect, useState } from 'react'
 import {
   BsArrowCounterclockwise,
   BsPauseFill,
   BsPlayFill,
 } from 'react-icons/bs'
-import useSound from 'use-sound'
-import sound from '../bell-ringing-05.mp3'
 
 function TheClock({
-  sessionLength,
-  breakLength,
-  setSessionLength,
-  setBreakLength,
+  theClock,
+  setTheClock,
+  sound,
+  counter,
+  playPause,
+  setPlayPause,
+  setCounter,
 }) {
-  const [counter, setCounter] = useState(sessionLength * 60)
-  const [playPause, setPlayPause] = useState(false)
-  const [status, setStatus] = useState('Session')
-  const [playBell] = useSound(sound)
-  const [timeLeft, setTimeLeft] = useState('25:00')
-
-  useEffect(() => {
-    setCounter(sessionLength * 60)
-  }, [sessionLength])
-
-  useEffect(() => {
-    if (counter < 0 && status === 'Session') {
-      playBell()
-      setCounter(breakLength * 60)
-      setStatus('Break')
-    } else if (counter < 0 && status === 'Break') {
-      playBell()
-      setCounter(sessionLength * 60)
-      setStatus('Session')
-    }
-    setTimeLeft(duration(counter * 1000).format('mm:ss'))
-    const timer =
-      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
-    return () => clearInterval(timer)
-  }, [playPause, counter])
-
   function handleReset() {
     //stop timer
-    setSessionLength(25)
-    setBreakLength(5)
+    setTheClock({
+      playPause: false,
+      status: 'Session',
+      breakLength: 5,
+      sessionLength: 25,
+      timeLeft: 1500,
+    })
     setCounter(1500)
-    setPlayPause(false)
-    setStatus('Session')
   }
   function toggleTimer() {
+    // const updatePlayPause = !theClock.playPause
+    // setTheClock((prevTC) => ({ ...prevTC, playPause: updatePlayPause }))
     setPlayPause((prevPP) => !prevPP)
-    console.log(playPause)
+    console.log(theClock)
   }
   return (
     <div className='theclock'>
       <h2 className='title' id='timer-label'>
-        {status}
+        {theClock.status}
       </h2>
-      <h1 id='time-left'>{timeLeft}</h1>
+      <h1 id='time-left'>{counter}</h1>
 
       {counter === 0 && (
         <audio id='beep' autoPlay>
