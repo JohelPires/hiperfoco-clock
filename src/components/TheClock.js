@@ -17,13 +17,13 @@ function TheClock({
   function handleReset() {
     //stop timer
     setTheClock({
-      playPause: false,
       status: 'Session',
       breakLength: 5,
       sessionLength: 25,
       timeLeft: 1500,
     })
     setCounter(1500)
+    setPlayPause(false)
   }
   function toggleTimer() {
     // const updatePlayPause = !theClock.playPause
@@ -36,9 +36,9 @@ function TheClock({
       <h2 className='title' id='timer-label'>
         {theClock.status}
       </h2>
-      <h1 id='time-left'>{counter}</h1>
+      <h1 id='time-left'>{theClock.timeLeft}</h1>
 
-      {counter === 0 && (
+      {theClock.timeLeft === 0 && (
         <audio id='beep' autoPlay>
           <source src={sound} type='audio/mpeg'></source>
         </audio>

@@ -29,20 +29,34 @@ function App() {
   // }, [sessionLength])
 
   useEffect(() => {
-    if (counter < 0 && theClock.status === 'Session') {
+    if (theClock.timeLeft < 0 && theClock.status === 'Session') {
       playBell()
-      setCounter(theClock.breakLength * 60)
-      // setStatus('Break')
-    } else if (counter < 0 && theClock.status === 'Break') {
+      setTheClock((prevTC) => ({
+        ...prevTC,
+        timeLeft: prevTC.breakLength * 60,
+        status: 'Break',
+      }))
+    } else if (theClock.timeLeft < 0 && theClock.status === 'Break') {
       playBell()
-      setCounter(theClock.sessionLength * 60)
-      // setStatus('Session')
+      setTheClock((prevTC) => ({
+        ...prevTC,
+        timeLeft: prevTC.sessionLength * 60,
+        status: 'Session',
+      }))
     }
     // setTimeLeft(duration(counter * 1000).format('mm:ss'))
     const timer =
-      playPause && setInterval(() => setCounter((prevC) => prevC - 1), 1000)
+      playPause &&
+      setInterval(
+        () =>
+          setTheClock((prevTC) => ({
+            ...prevTC,
+            timeLeft: prevTC.timeLeft - 1,
+          })),
+        1000
+      )
     return () => clearInterval(timer)
-  }, [playPause, counter])
+  }, [playPause, theClock])
 
   return (
     <div className='App'>
@@ -70,6 +84,8 @@ function App() {
           // setSessionLength={setSessionLength}
           theClock={theClock}
           setTheClock={setTheClock}
+          setCounter={setCounter}
+          playPause={playPause}
         />
       </main>
     </div>
